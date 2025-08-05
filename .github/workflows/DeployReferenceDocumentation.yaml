@@ -19,29 +19,29 @@ env:
 
 jobs:
   DeployALDoc:
-    runs-on: [ windows-latest ]
+    runs-on: [ windows-2025 ]
     name: Deploy Reference Documentation
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Initialize the workflow
         id: init
-        uses: microsoft/AL-Go-Actions/WorkflowInitialize@v5.3
+        uses: microsoft/AL-Go/Actions/WorkflowInitialize@d101244b872b091a8894c1ba4d58e5f0b652823e
         with:
           shell: powershell
 
       - name: Read settings
-        uses: microsoft/AL-Go-Actions/ReadSettings@v5.3
+        uses: microsoft/AL-Go/Actions/ReadSettings@d101244b872b091a8894c1ba4d58e5f0b652823e
         with:
           shell: powershell
 
       - name: Determine Deployment Environments
         id: DetermineDeploymentEnvironments
-        uses: microsoft/AL-Go-Actions/DetermineDeploymentEnvironments@v5.3
+        uses: microsoft/AL-Go/Actions/DetermineDeploymentEnvironments@d101244b872b091a8894c1ba4d58e5f0b652823e
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
@@ -54,7 +54,7 @@ jobs:
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
 
       - name: Build Reference Documentation
-        uses: microsoft/AL-Go-Actions/BuildReferenceDocumentation@v5.3
+        uses: microsoft/AL-Go/Actions/BuildReferenceDocumentation@d101244b872b091a8894c1ba4d58e5f0b652823e
         with:
           shell: powershell
           artifacts: 'latest'
@@ -71,7 +71,7 @@ jobs:
 
       - name: Finalize the workflow
         if: always()
-        uses: microsoft/AL-Go-Actions/WorkflowPostProcess@v5.3
+        uses: microsoft/AL-Go/Actions/WorkflowPostProcess@d101244b872b091a8894c1ba4d58e5f0b652823e
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:

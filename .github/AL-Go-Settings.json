@@ -1,5 +1,6 @@
 {
   "type": "AppSource App",
-  "templateUrl": "https://github.com/microsoft/AL-Go-AppSource@v5.3",
-  "MicrosoftTelemetryConnectionString": ""
+  "templateUrl": "https://github.com/businesscentralapps/tmpAZRoZZ-AppSource@main",
+  "MicrosoftTelemetryConnectionString": "",
+  "templateSha": "8773ed2dcdb833a74212254114369129b238addc"
 }
